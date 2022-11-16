@@ -27,7 +27,7 @@ namespace Business.Concrete
 				Email = userForRegisterDto.Email,
 				FirstName = userForRegisterDto.FirstName,
 				LastName = userForRegisterDto.LastName,
-				PasswordHsah = passwordHash,
+				PasswordHash = passwordHash,
 				PasswordSalt = passwordSalt,
 				Status = true
 			};
@@ -43,7 +43,7 @@ namespace Business.Concrete
 				return new ErorDataResult<User>("Kullanıcı bulunamadı");
 			}
 
-			if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHsah, userToCheck.PasswordSalt))
+			if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
 			{
 				return new ErorDataResult<User>("Parola hatası");
 			}
